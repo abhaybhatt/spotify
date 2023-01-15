@@ -10,7 +10,15 @@
 }
 
 .login-container-img {
-    height: 20vh;
+    height: 20%;
+    width: 40%;
+}
+
+@media only screen and (max-width: 600px) {
+    .login-container-img {
+        height: 20%;
+        width: 80%;
+    }
 }
 
 .login-container-button {
