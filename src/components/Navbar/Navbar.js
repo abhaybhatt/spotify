@@ -99,7 +99,7 @@ export default function Navbar() {
                 for (let i = 0; i < selectedMarkets.length; i++) {
                     if (availableMarkets.indexOf(selectedMarkets[0]) !== -1) {
                         filteredSongs.push(song)
-                        let change = true
+                        change = true
                         break;
                     }
                 }
@@ -149,6 +149,7 @@ export default function Navbar() {
             }
 
         } else {
+            console.info('filteredSongs', filteredSongs)
             if (change) {
                 dispatch(spotifyActions.setFilteredSongs({ filteredSongs: filteredSongs }))
             }

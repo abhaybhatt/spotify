@@ -17,7 +17,7 @@ const Body = () => {
     let songss = useSelector(state => state.spotify.songs)
     const songs = filterOn ? filteredSongs : songss
 
-    console.info('songs', songs)
+    console.info('filteredSongs', filteredSongs)
     const getPlaylistData = async () => {
         dispatch(spotifyActions.setLoading({ loading: true }))
         const response = await axios.get(
