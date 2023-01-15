@@ -8,7 +8,7 @@ import './Body.css'
 
 const Body = () => {
     const dispatch = useDispatch()
-    const [view, setView] = useState('grid')
+    const [view, setView] = useState('list')
     const [page, setPage] = useState(1)
     const token = useSelector(state => state.user.token)
     const query = useSelector(state => state.spotify.query)
@@ -17,7 +17,7 @@ const Body = () => {
     let songss = useSelector(state => state.spotify.songs)
     const songs = filterOn ? filteredSongs : songss
 
-    console.info('filteredSongs', filteredSongs)
+    //function to get initail data on page when component mounts for the first time
     const getPlaylistData = async () => {
         dispatch(spotifyActions.setLoading({ loading: true }))
         const response = await axios.get(
@@ -43,6 +43,7 @@ const Body = () => {
         getPlaylistData();
     }, []);
 
+    //function to handle pagination
     const handlePage = async (type) => {
         if (type === 'prev') {
             if (page > 1) {
@@ -76,6 +77,7 @@ const Body = () => {
         }
     }
 
+    //function to coberts ms to minutes + seconds
     const msToMinutesAndSeconds = (ms) => {
         var minutes = Math.floor(ms / 60000);
         var seconds = ((ms % 60000) / 1000).toFixed(0);

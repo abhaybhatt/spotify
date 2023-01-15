@@ -1,5 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+
+// global states related to songs
+// playlist - for stroing playlists
+// songs - for maintainging searched results
+// artists - for maintainging artists searched results
+// query - for maintainging searched query to make api request
+// queryType - for maintainging searched query to make api request
+// loading - for maintainging a loader while data is being fetched
+// filteredSongs - for maintainging songs after result
 const spotifySlice = createSlice({
     name: "spotify",
     initialState: { playlist: [], songs: [], artists: [], markets: [], query: "rock", queryType: "", loading: false, filteredSongs: [], filterOn: false },

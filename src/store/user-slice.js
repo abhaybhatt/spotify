@@ -1,5 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+
+//global state to maintain user token 
 const userSlice = createSlice({
     name: "user",
     initialState: { token: "" },

@@ -24,6 +24,8 @@ export default function Navbar() {
         { label: 'medium', value: 'medium', min: 51, max: 70 },
         { label: 'high', value: 'high', min: 71, max: 100 },
     ]
+
+    //function to serch songs according to the input query
     const getSearchedSongs = async () => {
         dispatch(spotifyActions.setLoading({ loading: true }))
         const response = await axios.get(
@@ -35,7 +37,6 @@ export default function Navbar() {
                 },
             }
         ).then((apiData) => {
-            // console.info('apiData', apiData)
             try {
                 const songs = apiData.data.tracks.items
                 dispatch(spotifyActions.setSongs({ songs: songs }))
@@ -54,6 +55,8 @@ export default function Navbar() {
         })
     };
 
+
+    //function to get markets to put in the filters
     const getMarkets = async () => {
         const response = await axios.get(
             `https://api.spotify.com/v1/markets`,
@@ -81,12 +84,14 @@ export default function Navbar() {
         getMarkets()
     }, [])
 
+    // function to search songs on pressing enter key
     const handleKeyDown = (event) => {
         if (event.key === 'Enter') {
             getSearchedSongs()
         }
     }
 
+    //function to sort songs according to filter
     const applyFilters = async () => {
         if (selectedMarkets.length === 0 && selectedPopularity.value === 'none') return
         dispatch(spotifyActions.setLoading({ loading: true }))
@@ -179,12 +184,6 @@ export default function Navbar() {
                     <FaSearch />
                     <input type="text" placeholder="Artists, songs" value={query} onChange={(e) => setQuery(e.target.value)} onKeyDown={handleKeyDown} />
                 </div>
-                {/* <div className="avatar">
-                    <a href={userInfo?.userUrl}>
-                        <CgProfile />
-                        <span>{userInfo?.name}</span>
-                    </a>
-                </div> */}
             </div>
 
             <div className="filters">
