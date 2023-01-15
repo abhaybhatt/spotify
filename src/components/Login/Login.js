@@ -4,7 +4,7 @@ import './Login.css'
 export default function Login() {
     const handleClick = async () => {
         const client_id = "448f0c16daf440308c6649e24883ee2b";
-        const redirect_uri = "http://localhost:3000/";
+        const redirect_uri = "https://spotify-coral-sigma.vercel.app/";
         const api_uri = "https://accounts.spotify.com/authorize";
         const scope = [
             "user-read-private",
